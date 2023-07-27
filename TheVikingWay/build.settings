@@ -14,9 +14,9 @@ settings =
 	},
 
 	splashScreen = 
-		{
-			enable = false
-		},
+	{
+		enable = false
+	},
 	--
 	-- Android section
 	--
@@ -38,16 +38,20 @@ settings =
 		{
 			UIStatusBarHidden = false,
 			UILaunchStoryboardName = "LaunchScreen",
+			NSUserTrackingUsageDescription = "This would allow the app to advertise better.",
 		},
 	},
 
 	--
 	-- Plugins section
 	--
-	plugins =
-	{
 
+    plugins =
+	{
+		['plugin.att'] = { publisherId = 'com.solar2d' },
 	},
+
+    
 
 	--
 	-- Project section
@@ -55,7 +59,7 @@ settings =
 	excludeFiles =
 	{
 		-- Exclude unnecessary files for each platform
-		all = { "Icon.png", "Icon-*dpi.png", "Images.xcassets", },
+		--all = { "Icon.png", "Icon-*dpi.png", "Images.xcassets", },
 		android = { "LaunchScreen.storyboardc", },
 	},
 }

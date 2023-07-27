@@ -237,6 +237,7 @@
             print("SCENE PAUSED")
             _pauseLayer:toFront()
             isPaused = true
+            data.save()
             buttonClose:addEventListener("tap", closePause)
         end
 
@@ -326,6 +327,22 @@
             end
         end
 
+        function returnBarrel(barrel)
+            local index
+            if (barrel == barrels[1]) then index = 1
+            elseif (barrel == barrels[2]) then index = 2
+            elseif (barrel == barrels[3]) then index = 3
+            elseif (barrel == barrels[4]) then index = 4
+            end
+
+            barrels[index].fill = { type = "image", filename = "Assets/game/BARREL.png" }
+                barrels[index].height = 177* data.getRatioX()
+                barrels[index].width = 173* data.getRatioX()
+                barrels[index].x = relayout._CX
+                barrels[index].y = barrels[index].y - 3* display.contentHeight
+                barrels[index].isCoin = false
+        end
+
         function hitBarrel(event)
             local sender = event.target
             local index
@@ -338,14 +355,8 @@
             if (barrels[index].isCoin == false) then
                 barrels[index].fill = { type = "image", filename = "Assets/game/coin.png" }
                 barrels[index].isCoin = true
-            else 
-                barrels[index].fill = { type = "image", filename = "Assets/game/BARREL.png" }
-                barrels[index].height = 177* data.getRatioX()
-                barrels[index].width = 173* data.getRatioX()
-                barrels[index].x = relayout._CX
-                barrels[index].y = barrels[index].y - 3* display.contentHeight
-                barrels[index].isCoin = false
                 gold = gold + 20
+
                 if (dataAudio.getIsAudioChannelBusy2() == false) then 
                     audio.play(coinSound, { channel = 2, loops = 0 })
                     print("AudioChannel2")
@@ -358,8 +369,8 @@
                 elseif (dataAudio.getIsAudioChannelBusy5() == false) then 
                     audio.play(coinSound, { channel = 5, loops = 0 })
                     print("AudioChannel4")
+                    --canonSounds.next = (canonSounds.next % canonSounds.len) + 1
                 end
-                canonSounds.next = (canonSounds.next % canonSounds.len) + 1
             end
         end
 
@@ -415,7 +426,17 @@
 
                 -- ////// barrels
                 for i = 1, #barrels do
-                    barrels[i].y = barrels[i].y + data.getSpeed()
+                    if (barrels[i].isCoin == false) then
+                        barrels[i].y = barrels[i].y + data.getSpeed()
+                    else
+                        barrels[i].x = barrels[i].x + (coinsText.x - barrels[i].x) * data.getSpeed() * 0.05
+                        barrels[i].y = barrels[i].y + (coinsText.y - barrels[i].y) * data.getSpeed()* 0.05
+                        -------------------------------- HERE
+                        if (coinsText.x - barrels[i].x < 100 * data.getRatioX() and coinsText.y - barrels[i].y < 100 * data.getRatioX()) then
+                            --print("return barrel")
+                            returnBarrel(barrels[i])
+                        end
+                    end
                 end
                 -- timer
                 timer.y = timer.y + data.getSpeed()

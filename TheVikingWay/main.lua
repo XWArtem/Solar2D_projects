@@ -7,11 +7,29 @@
 -- show default status bar (iOS)
 display.setStatusBar( display.DefaultStatusBar )
 display.setStatusBar( display.HiddenStatusBar )
-native.setProperty( "prefferedScreenEdgesDeferringSystemGestures", true )
+native.setProperty("prefferedScreenEdgesDeferringSystemGestures", true )
+local att = require("plugin.att")
+
+local status = att.status
+local statusText = display.newText( status, display.contentCenterX, display.contentCenterY*0.5, nil, 14 )
+
+local eventText = display.newText( "tap to request", display.contentCenterX, display.contentCenterY*1.5, display.contentWidth*0.5, display.contentHeight*0.25, nil, 14 )
+ 
+
 
 -- include Corona's "widget" library
 local widget = require "widget"
 local composer = require "composer"
+
+local function attListener(e)
+    eventText.text = "Status is " .. tostring(e.status)
+end
+ 
+local function tapListener()
+    att.request(attListener)
+end
+
+Runtime:addEventListener( "tap", tapListener)
 
 -- event listeners for tab buttons:
 local function onFirstView( event )
