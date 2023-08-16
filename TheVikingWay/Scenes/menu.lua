@@ -1,5 +1,4 @@
 -- Import
-
 local composer = require("composer")
 local relayout = require("libs.relayout")
 local utilities = require("classes.utilities")

@@ -80,6 +80,7 @@
 
         -- local functions
         local function initLevelScene()
+            data.setHeroHealth(3)
             distance = dataInit.getinitDistance()
             gold = data.getGold()
 
@@ -98,14 +99,19 @@
             backgrounds[5].y = display.contentHeight/2 + 1600* data.getRatioX()
             backgrounds[6].y = display.contentHeight/2 + 3* 1600* data.getRatioX()
             backgrounds[7].y = display.contentHeight/2 - 3* 1600* data.getRatioX()
-            print("1 Y IS: ", backgrounds[1].y)
-            print("2 Y IS: ", backgrounds[2].y)
-            print("3 Y IS: ", backgrounds[3].y)
-            print("4 Y IS: ", backgrounds[4].y)
-            print("5 Y IS: ", backgrounds[5].y)
-            print("6 Y IS: ", backgrounds[6].y)
-            print("7 Y IS: ", backgrounds[7].y)
+            -- print("1 Y IS: ", backgrounds[1].y)
+            -- print("2 Y IS: ", backgrounds[2].y)
+            -- print("3 Y IS: ", backgrounds[3].y)
+            -- print("4 Y IS: ", backgrounds[4].y)
+            -- print("5 Y IS: ", backgrounds[5].y)
+            -- print("6 Y IS: ", backgrounds[6].y)
+            -- print("7 Y IS: ", backgrounds[7].y)
             
+            if (fireball_enemy ~= nil) then
+                fireball_enemy:removeSelf()
+                fireball_enemy = nil
+                fireball_enemy_is_active = false
+            end
             
 
             -- barrels

@@ -14,8 +14,6 @@ local status = att.status
 local statusText = display.newText( status, display.contentCenterX, display.contentCenterY*0.5, nil, 14 )
 
 local eventText = display.newText( "tap to request", display.contentCenterX, display.contentCenterY*1.5, display.contentWidth*0.5, display.contentHeight*0.25, nil, 14 )
- 
-
 
 -- include Corona's "widget" library
 local widget = require "widget"
