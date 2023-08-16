@@ -54,9 +54,12 @@ function scene:create( event )
 
     self.view:insert(_grpMain)
     data.setMusic(true)
-    --
+    -- --
+    -- local background2 = display.newImageRect(_grpMain, "Assets/start/start_bg.png", _W * 2, display.actualContentHeight * 2) -- HERE
+    -- background2.x = _CX
+    -- background2.y = _CY
 
-    local background = display.newImageRect(_grpMain, "Assets/start/start_bg.png", _W, _H)
+    local background = display.newImageRect(_grpMain, "Assets/start/start_bg.png", _W, _H) -- HERE
     background.x = _CX
     background.y = _CY
 

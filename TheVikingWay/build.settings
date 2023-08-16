@@ -20,12 +20,19 @@ settings =
 	--
 	-- Android section
 	--
+
+	window = 
+	{
+		defaultMode = "maximized",
+	},
+
 	android =
 	{
 		usesPermissions =
 		{
 			"android.permission.INTERNET",
 		},
+		androidSystemUiVisibility = "immersiveSticky",
 	},
 
 	--

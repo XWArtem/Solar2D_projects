@@ -57,17 +57,17 @@ local function equipShipDamageX2()
     end
 end
 
-local function buyShipWithGuns()
-    data.setGold(data.getGold() - 300)
-    data.setShipWithGunsAv(true)
-    equipShipWithGuns()
-end
+-- local function buyShipWithGuns()
+--     data.setGold(data.getGold() - 300)
+--     data.setShipWithGunsAv(true)
+--     equipShipWithGuns()
+-- end
 
-local function buyShipDamageX2()
-    data.setGold(data.getGold() - 1000)
-    data.setShipDamageX2Av(true)
-    equipShipDamageX2()
-end
+-- local function buyShipDamageX2()
+--     data.setGold(data.getGold() - 1000)
+--     data.setShipDamageX2Av(true)
+--     equipShipDamageX2()
+-- end
 
 local function equipShipDamageX3()
     if (data.getCurrentShipIndex() ~= 3) then
@@ -194,11 +194,10 @@ function scene:show( event )
         else
             ship3Btn = display.newImageRect(_grpImproving2, "Assets/Improving_ship/inuse_frame.png", 340* data.getRatioX(), 113* data.getRatioX())
             ship3Btn.x = _CX
-            ship3Btn.y = display.contentCenterY
+            ship3Btn.y = _CY + display.contentWidth * 0.57
             ship3BtnText_imp2 = display.newText('IN USE', ship3Btn.x, ship3Btn.y, "Assets/font/DALEK__.ttf", 60* data.getRatioX())
             ship3Btn:addEventListener("tap", equipShipDamageX3)
         end
-
 
         buttonExit:addEventListener("tap", gotoMenu)
         buttonPrevious:addEventListener("tap", prevPage)

@@ -87,11 +87,26 @@
             backgrounds[2].x = relayout._CX
             backgrounds[3].x = relayout._CX
             backgrounds[4].x = relayout._CX
+            backgrounds[5].x = relayout._CX
+            backgrounds[6].x = relayout._CX
+            backgrounds[7].x = relayout._CX
 
-            backgrounds[1].y = relayout._CY
-            backgrounds[2].y = relayout._CY - 1600* data.getRatioX()
-            backgrounds[3].y = relayout._CY - 2* 1600* data.getRatioX()
-            backgrounds[4].y = relayout._CY + 1600* data.getRatioX()
+            backgrounds[1].y = display.contentHeight/2
+            backgrounds[2].y = display.contentHeight/2 - 1600* data.getRatioX()
+            backgrounds[3].y = display.contentHeight/2 - 2* 1600* data.getRatioX()
+            backgrounds[4].y = display.contentHeight/2 + 2* 1600* data.getRatioX()
+            backgrounds[5].y = display.contentHeight/2 + 1600* data.getRatioX()
+            backgrounds[6].y = display.contentHeight/2 + 3* 1600* data.getRatioX()
+            backgrounds[7].y = display.contentHeight/2 - 3* 1600* data.getRatioX()
+            print("1 Y IS: ", backgrounds[1].y)
+            print("2 Y IS: ", backgrounds[2].y)
+            print("3 Y IS: ", backgrounds[3].y)
+            print("4 Y IS: ", backgrounds[4].y)
+            print("5 Y IS: ", backgrounds[5].y)
+            print("6 Y IS: ", backgrounds[6].y)
+            print("7 Y IS: ", backgrounds[7].y)
+            
+            
 
             -- barrels
             barrels[1].y = relayout._CY - display.contentHeight -- it's the top of screen
@@ -401,10 +416,9 @@
         end
 
         local function moveBg()
-            backgrounds[1].y = backgrounds[1].y + data.getSpeed()
-            backgrounds[2].y = backgrounds[2].y + data.getSpeed()
-            backgrounds[3].y = backgrounds[3].y + data.getSpeed()
-            backgrounds[4].y = backgrounds[4].y + data.getSpeed()
+            for i = 1, #backgrounds do
+                backgrounds[i].y = backgrounds[i].y + data.getSpeed()
+            end
         end
 
         local function onAccelerometer(event)
@@ -419,8 +433,48 @@
                 moveBg()
                 --Reset the position if the bg goes off the screen
                 for i = 1, #backgrounds do
-                    if backgrounds[i].y > display.contentHeight + backgrounds[i].height then
-                        backgrounds[i].y = backgrounds[i].y - backgrounds[i].height * 3
+                    if backgrounds[i].y > display.contentHeight + backgrounds[i].height * 3 then
+                        print("BACKGROUND CHANGE Y")
+                        print("i is: ", i)
+                        backgrounds[i].y = display.contentHeight/2 - 3* 1600* data.getRatioX()
+                        print("NEW Y IS: ", backgrounds[i].y)
+
+                        -- if i == 1 then
+                        --     backgrounds[i].y = display.contentHeight/2
+                        --     print("i is: ", i)
+                        --     print("NEW Y IS: ", backgrounds[i].y)
+                        -- end
+                        -- if i == 2 then
+                        --     backgrounds[i].y = display.contentHeight/2 - 1600* data.getRatioX()
+                        --     print("i is: ", i)
+                        --     print("NEW Y IS: ", backgrounds[i].y)
+                        -- end
+                        -- if i == 3 then
+                        --     backgrounds[i].y = display.contentHeight/2 - 2* 1600* data.getRatioX()
+                        --     print("i is: ", i)
+                        --     print("NEW Y IS: ", backgrounds[i].y)
+                        -- end
+                        -- if i == 4 then
+                        --     backgrounds[i].y = display.contentHeight/2 + 2* 1600* data.getRatioX()
+                        --     print("i is: ", i)
+                        --     print("NEW Y IS: ", backgrounds[i].y)
+                        -- end
+                        -- if i == 5 then
+                        --     backgrounds[i].y = display.contentHeight/2 + 1600* data.getRatioX()
+                        --     print("i is: ", i)
+                        --     print("NEW Y IS: ", backgrounds[i].y)
+                        -- end
+                        -- if i == 6 then
+                        --     backgrounds[i].y = display.contentHeight/2 + 3* 1600* data.getRatioX()
+                        --     print("i is: ", i)
+                        --     print("NEW Y IS: ", backgrounds[i].y)
+                        -- end
+                        -- if i == 7 then
+                        --     backgrounds[i].y = display.contentHeight/2 - 3* 1600* data.getRatioX()
+                        --     print("i is: ", i)
+                        --     print("NEW Y IS: ", backgrounds[i].y)
+                        -- end
+                        
                     end
                 end
 
@@ -675,6 +729,7 @@
             _UI = display.newGroup()
             ---------------------------------------------------PAUSE-----------------------------
             backgroundPause = display.newImageRect(_pauseLayer, "Assets/start/start_bg.png", display.actualContentWidth, display.actualContentHeight)
+            --backgroundPause = display.newImageRect(_pauseLayer, "Assets/start/start_bg.png", display.actualContentWidth* data.getRatioX(), display.actualContentHeight* data.getRatioX())
             backgroundPause.x = relayout._CX
             backgroundPause.y = relayout._CY
             
@@ -708,7 +763,10 @@
             backgrounds[2] = display.newImageRect(_grpMain, "Assets/game/sea_bg.png", 1200* data.getRatioX(), 1600* data.getRatioX())
             backgrounds[3] = display.newImageRect(_grpMain, "Assets/game/sea_bg.png", 1200* data.getRatioX(), 1600* data.getRatioX())
             backgrounds[4] = display.newImageRect(_grpMain, "Assets/game/sea_bg.png", 1200* data.getRatioX(), 1600* data.getRatioX())
-            
+            backgrounds[5] = display.newImageRect(_grpMain, "Assets/game/sea_bg.png", 1200* data.getRatioX(), 1600* data.getRatioX())
+            backgrounds[6] = display.newImageRect(_grpMain, "Assets/game/sea_bg.png", 1200* data.getRatioX(), 1600* data.getRatioX())
+            backgrounds[7] = display.newImageRect(_grpMain, "Assets/game/sea_bg.png", 1200* data.getRatioX(), 1600* data.getRatioX())
+
             --barrels   
             for i = 1, #barrels do
                 barrels[i] = display.newImageRect(_grpMain, barrels[i].image, barrels[i].width, barrels[i].height)
@@ -814,6 +872,7 @@
         function scene:show( event )
             if (event.phase == "will") then
                 initLevelScene()
+                enemyIsActive = false
                 buttonShield:addEventListener("tap", activateShield)
                 buttonSound:addEventListener("tap", soundToggle)
                 buttonMusic:addEventListener("tap", musicToggle)
