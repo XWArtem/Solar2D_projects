@@ -444,43 +444,6 @@
                         print("i is: ", i)
                         backgrounds[i].y = display.contentHeight/2 - 3* 1600* data.getRatioX()
                         print("NEW Y IS: ", backgrounds[i].y)
-
-                        -- if i == 1 then
-                        --     backgrounds[i].y = display.contentHeight/2
-                        --     print("i is: ", i)
-                        --     print("NEW Y IS: ", backgrounds[i].y)
-                        -- end
-                        -- if i == 2 then
-                        --     backgrounds[i].y = display.contentHeight/2 - 1600* data.getRatioX()
-                        --     print("i is: ", i)
-                        --     print("NEW Y IS: ", backgrounds[i].y)
-                        -- end
-                        -- if i == 3 then
-                        --     backgrounds[i].y = display.contentHeight/2 - 2* 1600* data.getRatioX()
-                        --     print("i is: ", i)
-                        --     print("NEW Y IS: ", backgrounds[i].y)
-                        -- end
-                        -- if i == 4 then
-                        --     backgrounds[i].y = display.contentHeight/2 + 2* 1600* data.getRatioX()
-                        --     print("i is: ", i)
-                        --     print("NEW Y IS: ", backgrounds[i].y)
-                        -- end
-                        -- if i == 5 then
-                        --     backgrounds[i].y = display.contentHeight/2 + 1600* data.getRatioX()
-                        --     print("i is: ", i)
-                        --     print("NEW Y IS: ", backgrounds[i].y)
-                        -- end
-                        -- if i == 6 then
-                        --     backgrounds[i].y = display.contentHeight/2 + 3* 1600* data.getRatioX()
-                        --     print("i is: ", i)
-                        --     print("NEW Y IS: ", backgrounds[i].y)
-                        -- end
-                        -- if i == 7 then
-                        --     backgrounds[i].y = display.contentHeight/2 - 3* 1600* data.getRatioX()
-                        --     print("i is: ", i)
-                        --     print("NEW Y IS: ", backgrounds[i].y)
-                        -- end
-                        
                     end
                 end
 
