@@ -80,6 +80,14 @@
 
         -- local functions
         local function initLevelScene()
+            -- data.setGold(300)
+            -- data.setCurrentShipIndex(0)
+            -- data.setShipWithGunsAv(false)
+            -- data.setShipDamageX2Av(false)
+            -- data.setShipDamageX3Av(false)
+
+
+
             data.setHeroHealth(3)
             distance = dataInit.getinitDistance()
             gold = data.getGold()

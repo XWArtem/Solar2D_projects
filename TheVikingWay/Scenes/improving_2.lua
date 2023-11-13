@@ -85,14 +85,18 @@ local function equipShipDamageX3()
 end
 
 local function buyShipDamageX2()
-    data.setGold(data.getGold() - 1000)
-    data.setShipDamageX2Av(true)
+    if (data.getShipDamageX2Av() == false) then
+        data.setGold(data.getGold() - 1000)
+        data.setShipDamageX2Av(true)
+    end
     equipShipDamageX2()
 end
 
 local function buyShipDamageX3()
-    data.setGold(data.getGold() - 1500)
-    data.setShipDamageX3Av(true)
+    if (data.getShipDamageX3Av() == false) then
+        data.setGold(data.getGold() - 1500)
+        data.setShipDamageX3Av(true)
+    end
     equipShipDamageX3()
 end
 

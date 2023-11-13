@@ -76,8 +76,11 @@ local function equipShipWithGuns()
 end
 
 local function buyShipWithGuns()
-    data.setGold(data.getGold() - 300)
-    data.setShipWithGunsAv(true)
+    if (data.getShipWithGunsAv() == false) then
+        data.setGold(data.getGold() - 300)
+        data.setShipWithGunsAv(true)
+    end
+    
     equipShipWithGuns()
 end
 
@@ -139,11 +142,11 @@ function scene:show( event )
             ship1Btn.x = _CX
             ship1Btn.y = _CY + display.contentWidth * 0.57
             ship1BtnText_imp0 = display.newText('300', ship1Btn.x + display.contentHeight * 0.02, ship1Btn.y, "Assets/font/DALEK__.ttf", 60* data.getRatioX())
-            if (data.getShipWithGunsAv() == false and data.getGold() > 299) then
+            if (data.getShipWithGunsAv() == false and data.getGold() > 300) then
                 -- ship with guns can be bought
                 ship1BtnText_imp0:setFillColor(1, 1, 1, 1)
                 ship1Btn:addEventListener("tap", buyShipWithGuns)
-                else if (data.getShipWithGunsAv() == false and data.getGold() < 299) then
+                else if (data.getShipWithGunsAv() == false and data.getGold() < 300) then
                     -- ship with guns cannot be bought
                     ship1BtnText_imp0:setFillColor(1, 1, 1, 0.5)
                     else if (data.getShipWithGunsAv() == true) then
